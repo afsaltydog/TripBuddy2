@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* outline: 1px dotted black; */
+}
+@font-face {
+    font-family: 'Comic Sans Serif', 'Roboto';
+    src: url('roboto.eot'); /* IE9 Compat Modes */
+    src: url('roboto.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('roboto.woff') format('woff'), /* Modern Browsers */
+    url('roboto.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('roboto.svg#svgFontName') format('svg'); /* Legacy iOS */
+  }
+.container{
+    margin: 0px auto;
+    background-color: white;
+    min-height: 600px;
+    height: auto;
+    width: 700px;
+    text-align: center;
+    border: 3px solid black;
+    font-family: 'Roboto', sans-serif;
+}
+.header{
+    background-color: skyblue;
+    display: block;
+    min-height: 70px;
+    border-bottom: 3px solid black;
+}
+p{
+    margin-bottom: 10px;
+    padding-top: 5px;
+}
+input{
+    vertical-align: top;
+}
+#search{
+    border-radius: 20px;
+    width: 50px;
+}
+.main{
+    border: 3px solid black;
+    height: 530px;
+    width: auto;
+    display: block;
+}
+.main .mainheader h3{
+    text-align: left;
+    margin-left: -15px;
+    margin-right: 300px;
+}
+.main #topbox h4{
+    text-align: left;
+}
+.main #bottombox h4{
+    text-align: left;
+}
+.main #topbox h5{
+    text-align: left;
+    margin: 10px;
+}
+.main #bottombox h5{
+    text-align: left;
+    margin: 10px;
+}
+.mainform{
+    padding: 20px;
+    border: 3px solid black;
+    display: block;
+}
+.inputbox{
+    display: block;
+}
+.box{
+    display: inline-block;
+    min-height: 375px;
+    height: auto;
+    width: 214px;
+    text-align: left;
+    vertical-align: top;
+    margin: 20px;
+}
+.box form{
+    margin: 10px 0px 10px 0px;
+    text-align: left;
+}
+.box form input{
+    margin-bottom: 10px;
+    width: 90%;
+}
+.box form #button{
+    width: 35% !important;
+    color: white !important;
+    background-color: green !important;
+}
+.box form #view{
+    margin: 10px 0px 10px -225px;
+    text-align: left;
+}
+.box form input #view{
+    margin-bottom: 10px;
+    width: 65%;
+}
+.flash_error{
+    color: red;
+}
+.flash_valid{
+    color: green;
+}
+.error{
+    color: red;
+}
+.success{
+    color: green;
+}
+.mainheader{
+    min-height: 15px;
+}
+.mainheader h2{
+    display: inline-block;
+}
+.mainheader form{
+    display: inline-block;
+}
+.mainheader br{
+    display: inline-block;
+}
+.mainheader h3{
+    display: inline-block;
+}
+.mainheader a{
+    display: inline-block;
+    margin-left: 100px;
+}
+ul{
+    list-style-type: none;
+}
+img{
+    height: 20px;
+    width: 20px;
+}
+.loginform div{
+    display: block;
+}
+.loginform input{
+    display: inline-block;
+    white-space: nowrap;
+}
+.box #bottombox .wishform{
+    width: auto;
+}
+.jobform label{
+    width: 20em;
+    display: inline-block;
+    white-space: nowrap;
+}
+button{
+    box-shadow: 2em;
+}

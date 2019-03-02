@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta charset="UTF-8">
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Option L (Trip Buddy 2)</title>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class='container'>
+            <div class='header'>
+                <h3>Trip Buddy 2</h3>
+            </div>
+            <div class='main'>
+                <div class='mainheader'>
+                    <h3>Hello {{fname}}! Create a trip!</h3>
+                    <a href='/logout'>Logout</a>
+                </div>
+                <div class='box' id='bottombox'>
+                        {% with regis = get_flashed_messages(category_filter=["logout"]) %}
+                        {% if regis %}
+                            {%- for msg in regis %}
+                            <p class='flash_error'>{{ msg }}</p>
+                            {% endfor -%}
+                        {% endif %}
+                    {% endwith %}
+                    <form class='tripform' action="/set_trip" method="POST" id='view'>
+                        Destination: <input type='text' name='trip_name' class='inputbox' id='view'>
+                    
+                        Start Date: <input type="date" name="sdate">
+                      
+                        End Date: <input type='date' name='edate'>
+                       
+                        Plan: <textarea rows="4" cols="50" name='trip_plan'></textarea>
+                        <button type='submit' formaction="/display">Cancel</button>
+                        <button type='submit'>Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

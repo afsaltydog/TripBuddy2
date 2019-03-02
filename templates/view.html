@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Option L (Trip Buddy 2)</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class='container'>
+            <div class='header'>
+                <h3>Trip Buddy 2</h3>
+            </div>
+            <div class='main'>
+                <div class='mainheader'>
+                    <h3>Hello {{fname}}! Read about this trip!</h3>
+                    <a href='/display'>Dashboard</a>
+                    <a href='/logout'>Logout</a>
+                </div>
+                <div class='box' id='bottombox'>
+                    {% with regis = get_flashed_messages(category_filter=["logout"]) %}
+                        {% if regis %}
+                            {%- for msg in regis %}
+                            <p class='flash_error'>{{ msg }}</p>
+                            {% endfor -%}
+                        {% endif %}
+                    {% endwith %}
+                    <h4>{{trip_name}}</h4>
+                    <hr>
+                    <ul class='viewbox'>
+                        {% for t in tripInfo %}
+                            <li><p>Start Date: {{tripInfo[0]['start_date']}}</p></li>
+                            <li><p>End Date: {{tripInfo[0]['end_date']}}</p></li>
+                            <li><p>Created On: {{tripInfo[0]['created_at']}}</p></li>
+                            <li><p>Plan: {{tripInfo[0]['plan']}}</p></li>
+                            <li><p>Created_by: {{owner}}</p></li>
+                        {% endfor %}
+                    </ul>
+                    <br>
+                    <ul class='viewbox'>
+                        {% if peopleInfo %}
+                            <li>People who have joined the trip:</li>
+                            {% for p in peopleInfo %}
+                                <li><p>{{peopleInfo[0]['joined']}}</p></li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+                <a href="/add/{{tripInfo[0]['id']}}">Add to my trips</a>
+            </div>
+        </div>
+    </body>
+</html>

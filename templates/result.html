@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta charset="UTF-8">
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Option L (Trip Buddy 2)</title>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class='container'>
+            <div class='header'>
+                <h3>Trip Buddy 2</h3>
+                {% with regis = get_flashed_messages(category_filter=["success"]) %}
+                    {% if regis %}
+                        {%- for msg in regis %}
+                        <p class='flash_valid'>{{ msg }}</p>
+                        {% endfor -%}
+                    {% endif %}
+                {% endwith %}
+                {% with regis = get_flashed_messages(category_filter=["logout"]) %}
+                    {% if regis %}
+                        {%- for msg in regis %}
+                        <p class='flash_error'>{{ msg }}</p>
+                        {% endfor -%}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class='main'>
+                <div class='mainheader'>
+                    <h3>Hello {{fname}}!</h3>
+                    <a href='/logout'>Logout</a>
+                    <form class='loginform' action="/newtrip" method="POST">
+                        <button type='submit'>Create a new trip!</button>
+                    </form>
+                </div>
+                <div id='topbox'>
+                    <h5>Your's trips:</h5>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Destination</td>
+                            <td>Start Date</td>
+                            <td>End Date</td>
+                            <td>Plan</td>
+                            <td>Actions</td>
+                        </tr>
+                    {% for t in tripInfo %}
+                        <tr>
+                            <td><a href="/view/{{t['id']}}">{{ t['destination'] }}</a></td>
+                            <td>{{ t['start_date'] }}</td>
+                            <td>{{ t['end_date'] }}</td>
+                            <td>{{ t['plan'] }}</td>
+                            <td><a href="/delete/{{t['id']}}">Remove</a><a href="/edit/{{t['id']}}">Edit</a></td>
+                            
+                        </tr>
+                    {% endfor %}
+                    {% for j in joinedInfo %}
+                        <tr>
+                            <td><a href="/view/{{j['id']}}">{{ j['destination'] }}</a></td>
+                            <td>{{ j['start_date'] }}</td>
+                            <td>{{ j['end_date'] }}</td>
+                            <td>{{ j['plan'] }}</td>
+                            <td><a href="/cancel/{{j['id']}}">Cancel</a></td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+                <div id='bottombox'>
+                    <h5>Other people's trips:</h5>
+                    <table class="table table-striped">
+                        <tr>
+                                <td>Destination</td>
+                                <td>Start Date</td>
+                                <td>End Date</td>
+                                <td>Plan</td>
+                                <td>Want to join?</td>
+                            </tr>
+                        {% for ut in utInfo %}
+                            <tr>
+                                <td><a href="/view/{{ut['id']}}">{{ ut['destination'] }}</a></td>
+                                <td>{{ ut['start_date'] }}</td>
+                                <td>{{ ut['end_date'] }}</td>
+                                <td>{{ ut['plan'] }}</td>
+                                <td><a href="/add/{{ut['id']}}">Join</a></td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
